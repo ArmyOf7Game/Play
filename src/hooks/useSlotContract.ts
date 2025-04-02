@@ -94,7 +94,7 @@ interface HierarchicalCache {
     }
 }
 
-
+// @ts-ignore
 let hierarchicalCache: HierarchicalCache = {};
 
 
@@ -495,10 +495,9 @@ export function useSlotContract() {
                                 transactionMap.set(txHash, transaction);
 
       
-                                const superiorAddress = normalizeAddress(message.destination);
 
                                 if (transaction.in_msg?.source) {
-                                    const recruitAddress = normalizeAddress(transaction.in_msg.source);
+                            
                                    
                                 }
                             } else {

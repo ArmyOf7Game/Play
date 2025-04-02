@@ -31,7 +31,7 @@ const BattleSystem: React.FC<BattleSystemProps> = ({
     const [slideDirection, setSlideDirection] = useState<'out' | 'in'>('in');
     const [gameOver, setGameOver] = useState<boolean>(false);
     const logContainerRef = useRef<HTMLDivElement>(null);
-    const [previousStoryLength, setPreviousStoryLength] = useState(0);
+
 
 
 
@@ -714,119 +714,6 @@ Your total force strength is ${armyStrength.totalForce} troops with combat effec
 
   
 
-
-   
-    const mockResponseGeneration = (prompt: string): { story: string, choices: string[] } => {
-        // Extract key elements from the prompt to customize the response
-        const isBattleAftermath = prompt.includes("aftermath of the battle");
-        const isDefeatAftermath = prompt.includes("aftermath of the defeat");
-        const isMissionComplete = prompt.includes("successfully completed");
-        const isMissionStart = prompt.includes("beginning of this military operation");
-
-        let story = "";
-        let choices: string[] = [];
-
-        if (isMissionStart) {
-         
-            const missionStartTemplates = [
-                `MISSION BRIEFING: ${missionTheme?.operationName}\n\nThe command tent is silent as you review the tactical display. Intelligence reports confirm ${missionTheme?.enemyForce} have established a stronghold in ${missionTheme?.location}. Your objective is clear: ${missionTheme?.objective}.\n\nHowever, be advised that ${missionTheme?.complication}. Success will secure ${missionTheme?.reward}, critical to our ongoing operations.\n\nYour force of ${hierarchyCount.captains} officers, ${hierarchyCount.caporals} sergeants, and ${hierarchyCount.soldiers} soldiers awaits your command. The clock is ticking, Commander.`,
-
-                `TACTICAL ASSESSMENT: ${missionTheme?.location}\n\nDawn breaks over the horizon as your convoy approaches the operational zone. Satellite imagery shows ${missionTheme?.enemyForce} have fortified key positions. Your mission parameters are non-negotiable: ${missionTheme?.objective}.\n\nField reports warn that ${missionTheme?.complication}, which will complicate our approach. High Command emphasizes the strategic importance of ${missionTheme?.reward}.\n\nYour battle-ready force stands prepared for deployment. The next move is yours, Commander.`,
-
-                `OPERATION ORDER: ${campaignLevel}00 HOURS\n\nThe tactical operations center buzzes with activity as final preparations are made. Intelligence has confirmed ${missionTheme?.enemyForce} presence in ${missionTheme?.location}. Mission objective: ${missionTheme?.objective}.\n\nBe advised, ${missionTheme?.complication}. Mission success will yield ${missionTheme?.reward}, essential for future operations.\n\nYour combat-ready force awaits your strategic direction. Time is of the essence.`
-            ];
-
-            story = missionStartTemplates[Math.floor(Math.random() * missionStartTemplates.length)];
-
-            choices = [
-                "Execute frontal assault on main objective",
-                "Deploy reconnaissance teams to gather intelligence",
-                "Establish forward operating base before advancing",
-                "Attempt covert infiltration to avoid detection"
-            ].sort(() => Math.random() - 0.5).slice(0, 3);
-
-        } else if (isBattleAftermath) {
-          
-            const victoryTemplates = [
-                `The dust settles as your forces secure the area. The defeated ${enemyStats.name} have retreated, leaving behind valuable equipment and intelligence. Your troops move efficiently, treating wounded and establishing a defensive perimeter. The victory has boosted morale, but you know the enemy will regroup. Time is critical to maintain momentum.`,
-
-                `Smoke rises from the battlefield as your soldiers confirm the area is clear. The ${enemyStats.name} have been routed, their defensive positions now under your control. Communications intercepts suggest enemy reinforcements may be en route. Your officers await your next command while the tactical advantage is yours.`,
-
-                `The engagement is over. Your tactical superiority proved decisive against the ${enemyStats.name}. Forward scouts report the enemy is in disarray, but they won't remain disorganized for long. Your NCOs have already begun consolidating your position, but the mission clock continues to tick. The next phase is crucial.`
-            ];
-
-            story = victoryTemplates[Math.floor(Math.random() * victoryTemplates.length)];
-
-            choices = [
-                "Press the advantage and advance rapidly",
-                "Fortify position and prepare for counterattack",
-                "Split forces to secure multiple objectives",
-                "Extract valuable intelligence before proceeding",
-                "Call in air support to target enemy reinforcements",
-                "Establish supply lines to maintain operational capacity"
-            ].sort(() => Math.random() - 0.5).slice(0, 3);
-
-        } else if (isDefeatAftermath) {
-           
-            const defeatTemplates = [
-                `The retreat is chaotic but disciplined. Your remaining forces regroup at the fallback position, tending to the wounded and accounting for losses. The ${enemyStats.name} have gained ground, but their advance has slowed. Your officers report that morale is shaken but not broken. This setback is significant, but the mission can still succeed with adjusted tactics.`,
-
-                `Communications crackle with urgent reports as your forces withdraw under heavy pressure. The engagement with ${enemyStats.name} has cost you dearly in personnel and equipment. Your command staff has established a secure position 3 clicks east of the combat zone. Despite the defeat, valuable intelligence was gathered about enemy capabilities and dispositions.`,
-
-                `The withdrawal is complete. Your forces have suffered casualties, but core combat effectiveness remains. The ${enemyStats.name} now control the contested area, but they've expended significant resources in the process. Your remaining officers have already begun formulating alternative approaches. This is a setback, not a mission failure.`
-            ];
-
-            story = defeatTemplates[Math.floor(Math.random() * defeatTemplates.length)];
-
-            choices = [
-                "Request immediate reinforcements",
-                "Regroup and attempt flanking maneuver",
-                "Change approach to stealth tactics",
-                "Utilize terrain for guerrilla warfare",
-                "Focus on sabotage to weaken enemy position",
-                "Establish new forward base in safer territory"
-            ].sort(() => Math.random() - 0.5).slice(0, 3);
-
-        } else if (isMissionComplete) {
-           
-            const completionTemplates = [
-                `MISSION REPORT: ${missionTheme?.operationName} - SUCCESSFUL\n\nObjective secured. Your forces have successfully completed the mission to ${missionTheme?.objective} despite encountering ${missionTheme?.complication}. The ${missionTheme?.enemyForce} have been neutralized or forced to retreat from ${missionTheme?.location}.\n\nCasualties: ${armyStats.casualties} personnel\nStrategic Value: Acquisition of ${missionTheme?.reward}\n\nHigh Command sends commendations for your tactical acumen. Your success here will significantly impact ongoing operations in the region.`,
-
-                `OPERATION COMPLETE: ${missionTheme?.operationName}\n\nMission parameters fulfilled. Your tactical leadership has resulted in the successful completion of all primary objectives in ${missionTheme?.location}. The threat posed by ${missionTheme?.enemyForce} has been eliminated.\n\nPersonnel lost: ${armyStats.casualties}\nStrategic gains: ${missionTheme?.reward}\n\nThis victory represents a significant advancement in our strategic position. Your battle group is ordered to return to base for debriefing and reassignment.`,
-
-                `AFTER ACTION REPORT: ${missionTheme?.operationName}\n\nMission status: Complete\nObjective: ${missionTheme?.objective} - Achieved\nEnemy forces: ${missionTheme?.enemyForce} - Neutralized\n\nDespite complications from ${missionTheme?.complication}, your forces successfully secured ${missionTheme?.reward}. The cost was ${armyStats.casualties} brave personnel, whose sacrifice ensured mission success.\n\nThis operation has significantly improved our strategic position in the region. Your command decisions were instrumental to this outcome.`
-            ];
-
-            story = completionTemplates[Math.floor(Math.random() * completionTemplates.length)];
-
-            choices = ["Return to base for debriefing", "Prepare for next mission"];
-
-        } else {
-          
-            const progressionTemplates = [
-                `Your forces advance through ${missionTheme?.location}, maintaining tactical awareness. Scout reports indicate ${missionTheme?.enemyForce} activity ahead, but your approach remains undetected. The objective to ${missionTheme?.objective} is now within operational range. Your officers report that morale is steady, though supplies are being consumed at expected rates.`,
-
-                `The operation continues as planned. Your units have established effective control of the approach vectors to the primary objective. Intelligence suggests the ${missionTheme?.enemyForce} remain unaware of your full tactical disposition. The complication of ${missionTheme?.complication} requires ongoing adaptation, but your NCOs are implementing contingencies effectively.`,
-
-                `Progress toward the objective is steady. Your forces have navigated the challenges of ${missionTheme?.location} while maintaining operational security. Forward elements report increased ${missionTheme?.enemyForce} activity, suggesting they may be reinforcing key positions. The mission to ${missionTheme?.objective} remains viable, though tactical flexibility will be essential.`
-            ];
-
-            story = progressionTemplates[Math.floor(Math.random() * progressionTemplates.length)];
-
-            choices = [
-                "Advance main force toward primary objective",
-                "Send reconnaissance team to scout enemy positions",
-                "Establish defensive perimeter and observe enemy patterns",
-                "Execute diversionary tactics to draw enemy attention",
-                "Deploy special forces for targeted operation",
-                "Secure supply route before advancing further",
-                "Attempt diplomatic contact with local forces",
-                "Call for air reconnaissance of the target area"
-            ].sort(() => Math.random() - 0.5).slice(0, 3);
-        }
-
-        return { story, choices };
-    };
 
     
     const handleButtonClick = (index: number) => {

@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback} from 'react';
 import { Button, Card, Elevation } from '@blueprintjs/core';
 import { TonConnectButton } from '@tonconnect/ui-react';
 import { Address } from '@ton/core';
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { HierarchyCounts } from './types'; 
 import { SlotCard } from './components/SlotCard';
 import { useTonConnectUI } from '@tonconnect/ui-react';
@@ -65,7 +65,6 @@ function App() {
     joinSlot,
     getHierarchy,
     getSquadMembers,
-    address: contractAddress,
     getTotalTopSlots,
     buildCompleteHierarchy,
     fetchPayoutsAndUpdateHierarchy,
@@ -80,7 +79,7 @@ function App() {
   const [nestedSquadMembers, setNestedSquadMembers] = useState<HierarchicalSquadMember[]>([]);
   const [grandchildSquadMembers, setGrandchildSquadMembers] = useState<HierarchicalSquadMember[]>([]);
   const [selectedSlotIndex] = useState<number>(0);
-  const navigate = useNavigate();
+
   
   const [hierarchyCount, setHierarchyCount] = useState<HierarchyCounts>({
     soldiers: 0,
@@ -102,10 +101,9 @@ function App() {
   const [showInfo, setShowInfo] = useState(false);
   const [hudView, setHudView] = useState('stats1');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { telegramUser, isInitialized, error: telegramError, isTelegram } = useTelegramAuth();
+  const { telegramUser, isTelegram } = useTelegramAuth();
   const [completeHierarchyData, setCompleteHierarchyData] = useState<CompleteHierarchyData | null>(null);
   const [showSquadManagement, setShowSquadManagement] = useState(false);
-  const [showGameComingSoon, setShowGameComingSoon] = useState(false);
   const [resources, setResources] = useState(0);
   const [showBattleSystem, setShowBattleSystem] = useState(false);
 
@@ -894,7 +892,7 @@ function App() {
                         type="text"
                         value={parentAddress}
                         onChange={(e) => setParentAddress(e.target.value)}
-                                onPaste={(e) => {
+                                onPaste={() => {
                                   if (isTelegram) {
                                   
                                     handlePaste();

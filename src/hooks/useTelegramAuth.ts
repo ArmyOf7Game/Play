@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { validateTelegramInitData, parseTelegramInitData, bypassTelegramValidation } from './telegramAuth';
+import { validateTelegramInitData, bypassTelegramValidation } from './telegramAuth';
 
 declare global {
     interface Window {
