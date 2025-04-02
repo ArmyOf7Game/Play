@@ -1,0 +1,402 @@
+.adventure-system {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    overflow-y: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+.adventure-system.slide-out {
+    transform: translateX(-100%);
+}
+
+.adventure-system.slide-in {
+    transform: translateX(0);
+}
+
+.adventure-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+}
+
+.adventure-header h2 {
+    margin: 0;
+    color: #2ea0d5;
+    text-shadow: 0 0 10px rgba(46, 160, 213, 0.5);
+}
+
+.player-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.stat {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(46, 160, 213, 0.3);
+}
+
+.campaign-progress,
+.battle-progress {
+    margin-top: 10px;
+}
+
+.progress-label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ea0d5 0%, #4ecdc4 100%);
+    transition: width 0.5s ease;
+}
+
+.battle-fill {
+    background: linear-gradient(90deg, #ff6b6b 0%, #ffa502 100%);
+}
+
+.story-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    max-height: 300px;
+    /* Increased from 200px */
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Courier New', monospace;
+}
+
+.story-container::-webkit-scrollbar,
+.game-log::-webkit-scrollbar {
+    width: 8px;
+}
+
+.story-container::-webkit-scrollbar-track,
+.game-log::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.story-container::-webkit-scrollbar-thumb,
+.game-log::-webkit-scrollbar-thumb {
+    background: rgba(46, 160, 213, 0.5);
+    border-radius: 4px;
+}
+
+.story-container::-webkit-scrollbar-thumb:hover,
+.game-log::-webkit-scrollbar-thumb:hover {
+    background: rgba(46, 160, 213, 0.7);
+}
+
+.story-text p {
+    margin: 0 0 15px 0;
+    /* Increased bottom margin */
+    line-height: 1.6;
+    font-size: 16px;
+    /* Increased from default */
+    color: #e6e6e6;
+    /* Lighter color for better contrast */
+}
+
+.story-text p:first-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2ea0d5;
+    margin-bottom: 20px;
+}
+
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice-button {
+    background: rgba(46, 160, 213, 0.2);
+    border: 1px solid #2ea0d5;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+}
+
+.choice-button:hover {
+    background: rgba(46, 160, 213, 0.4);
+    transform: translateY(-2px);
+}
+
+.choice-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.battle-interface {
+    background: rgba(176, 11, 11, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.battle-interface h3 {
+    margin: 0;
+    color: #ff6b6b;
+    text-align: center;
+}
+
+.battle-opponents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friendly-forces,
+.enemy-forces {
+    flex: 1;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.vs-indicator {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 15px;
+    color: #ff6b6b;
+}
+
+.force-composition {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.enemy-strength {
+    margin-top: 10px;
+}
+
+.strength-bar {
+    height: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.strength-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b 0%, #ff4757 100%);
+    transition: width 0.5s ease;
+}
+
+.enemy-type {
+    font-size: 12px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+.battle-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.action-button {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.attack-button {
+    background: rgba(46, 160, 213, 0.3);
+    border-color: #2ea0d5;
+}
+
+.special-button {
+    background: rgba(255, 165, 2, 0.3);
+    border-color: #ffa502;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+
+.action-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+}
+
+.game-log {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    /* Increased padding */
+    max-height: 200px;
+    /* Increased from 150px */
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-log h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    /* Increased from 16px */
+    color: #4ecdc4;
+}
+
+.log-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* Increased from 5px */
+}
+
+.log-entry {
+    font-size: 14px;
+    /* Increased from 12px */
+    padding: 8px 10px;
+    /* Increased padding */
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.2);
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+    color: #e6e6e6;
+    /* Lighter color for better contrast */
+}
+
+/* Add a subtle highlight to the most recent log entry */
+.log-entry:last-child {
+    background: rgba(46, 160, 213, 0.15);
+    border-left: 3px solid #2ea0d5;
+}
+
+.mission-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 15px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-left-color: #2ea0d5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #2ea0d5;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Battle tab slide animation */
+.battle-tab {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    color: white;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.battle-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 99;
+}
+
+.battle-tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.close-battle-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.close-battle-button:hover {
+    color: #2ea0d5;
+}
+

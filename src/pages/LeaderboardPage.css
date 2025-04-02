@@ -1,0 +1,79 @@
+.leaderboard-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.podium-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 400px;
+    margin-bottom: 50px;
+}
+
+.podium-place {
+    width: 200px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.place-1 {
+    height: 300px;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+}
+
+.place-2 {
+    height: 250px;
+    background: linear-gradient(45deg, #C0C0C0, #E8E8E8);
+}
+
+.place-3 {
+    height: 200px;
+    background: linear-gradient(45deg, #CD7F32, #DEB887);
+}
+
+.podium-player {
+    padding: 20px;
+    text-align: center;
+}
+
+.crown {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.medal {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.leaderboard-list {
+    margin-top: 30px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.rank {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
