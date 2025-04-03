@@ -9,12 +9,17 @@
   <title>-:Armyof7:-</title>
 
   <!-- Buffer polyfill using CDN -->
-  <script type="module" crossorigin src="/Play/assets/index-Doh7hPQy.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/buffer@6.0.3/index.min.js"></script>
+  <script>
+    // Make Buffer available globally
+    window.Buffer = window.buffer.Buffer;
+  </script>
+  <script type="module" crossorigin src="/Play/assets/index-BDAA7H0q.js"></script>
+  <link rel="stylesheet" crossorigin href="/Play/assets/index-Ch9ryUQv.css">
 </head>
 
 <body>
   <div id="root"></div>
-  <!-- Vite will inject the correct script and link tags here during build -->
 </body>
 
 </html>
