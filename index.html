@@ -7,14 +7,19 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, orientation=portrait" />
   <title>-:Armyof7:-</title>
-  
-  <!-- Buffer polyfill using CDN -->
+
+  <!-- Process and Buffer polyfills -->
+  <script>
+    // Process polyfill
+    window.process = { env: {} };
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/buffer@6.0.3/index.min.js"></script>
   <script>
     // Make Buffer available globally
     window.Buffer = window.buffer.Buffer;
+    console.log("Buffer polyfill loaded:", typeof window.Buffer);
   </script>
-  <script type="module" crossorigin src="/Play/assets/index-CVxZ1xHm.js"></script>
+  <script type="module" crossorigin src="/Play/assets/index-DbrCVtum.js"></script>
   <link rel="stylesheet" crossorigin href="/Play/assets/index-Ch9ryUQv.css">
 </head>
 
@@ -23,4 +28,3 @@
 </body>
 
 </html>
-
