@@ -87,11 +87,11 @@ function App() {
     captains: 0
   });
   const [viewState, setViewState] = useState('main');
-  const click1 = new Audio('/click1.mp3');
-  const click2 = new Audio('/click2.wav');
-  const click3 = new Audio('/switch.wav');
-  const click4 = new Audio('/click4.wav');
-  const click5 = new Audio('/click5.wav');
+  const click1 = new Audio(`${import.meta.env.BASE_URL}click1.mp3`);
+  const click2 = new Audio(`${import.meta.env.BASE_URL}click2.wav`);
+  const click3 = new Audio(`${import.meta.env.BASE_URL}switch.wav`);
+  const click4 = new Audio(`${import.meta.env.BASE_URL}click4.wav`);
+  const click5 = new Audio(`${import.meta.env.BASE_URL}click5.wav`);
   const [showJoinOptions, setShowJoinOptions] = useState(false);
   const [showParentInput, setShowParentInput] = useState(false);
   const [topSlotsAvailable, setTopSlotsAvailable] = useState(false);
@@ -603,7 +603,7 @@ function App() {
 
 
 
-    const messageText = `Join me in Army of 7, a strategic blockchain game on TON!\n\nUse my invite link to join under my command: ${inviteLink}\n\n`;
+    const messageText = `Join me in Army of 7, a strategic blockchain game on TON!\n\nEarn insane ammounts of TON directly and instantly into your wallet, no withdrawals needed!\n\nUse my invite link to join under my command: ${inviteLink}\n\n`;
 
 
     navigator.clipboard.writeText(messageText);
@@ -731,9 +731,9 @@ function App() {
   if (isInitialLoading) {
     return (
       <div className="App2">
-        <img src="/loadinglogo.png" alt="Logo" className="loading-logo" />
+        <img src={`${import.meta.env.BASE_URL}loadinglogo.png`} alt="Logo" className="loading-logo" />
         <img
-          src="/loadingimage.png"
+          src={`${import.meta.env.BASE_URL}loadingimage.png`}
           alt="Loading"
           className="loading-bar"
           onAnimationEnd={handleLoading}
@@ -753,7 +753,7 @@ function App() {
        
           <div className={`loading-overlay ${isLoading ? '' : 'hidden'}`}>
               <div className="loading-spinner-container">
-                <img src="/loading.gif" alt="Loading..." className="loading-spinner" />
+                <img src={`${import.meta.env.BASE_URL}loading.gif`} alt="Loading..." className="loading-spinner" />
                 <div className="loading-text">Processing blockchain data...</div>
               </div>
             </div>
@@ -771,7 +771,7 @@ function App() {
               
 
         <div className="logo">      
-          <img src="/logo.png" alt="Logo" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" />
             </div>
             
               
@@ -786,11 +786,11 @@ function App() {
                   <h2>Army of 7</h2>
                   <div className="info-section">
                     <p>Army of 7 is a transparent, blockchain-based strategy game where players build and command hierarchical military structures. Built on TON blockchain with fully open-source code available on GitHub, the game leverages smart contracts to ensure fair play and verifiable outcomes.</p>
-                    <img src="/hierarchy-diagram.png" alt="Hierarchy" className="info-image" />
+                    <img src={`${import.meta.env.BASE_URL}hierarchy-diagram.png`} alt="Hierarchy" className="info-image" />
                   
                   <p>Players earn rewards in TON coins instantly to their wallet, for every recruits under their three-tier hierarchy: Soldiers, Caporals, and Captains. Payouts are processed by a smart contract on the TON blockchain, creating an engaging <b>play-to-earn ecosystem.</b></p>
 
-                      <img src="/game-modes.png" alt="Game Modes" className="info-image" />
+                      <img src={`${import.meta.env.BASE_URL}game-modes.png`} alt="Game Modes" className="info-image" />
                   <p>The game's initial phase focuses on building complete army structures across all hierarchical levels, with each player potentially commanding up to 7 direct recruits. Future phases will introduce new strategic elements and gameplay mechanics, making Army of 7 an <b>evolving gaming experience.</b></p>
                   <p>Join now and start building your military empire on the blockchain!</p>
                     </div>
@@ -800,11 +800,11 @@ function App() {
             <div className="hud-container">
               
               
-              <img src="/hud-background.png" alt="HUD" className="hud-background" />
+              <img src={`${import.meta.env.BASE_URL}hud-background.png`} alt="HUD" className="hud-background" />
               <ScaledUIContainer designWidth={1080} designHeight={1080}>
               <img
                 className="info-button"
-                src="/info.svg"
+                src={`${import.meta.env.BASE_URL}info.svg`}
                 onClick={() => {
                   click4.play();
                   setShowInfo(true);
@@ -843,7 +843,7 @@ function App() {
                       </div>  
                       <img
                         className={`hud-button join-army ${!address ? 'disabled' : ''} mount`}
-                        src="/join-army.svg"
+                        src={`${import.meta.env.BASE_URL}join-army.svg`}
                         alt="Join Army"
                         onClick={() => {
                           click4.play();
@@ -870,7 +870,7 @@ function App() {
                         click4.play(); 
                         handleJoin();
                         }}
-                         src="/supreme.svg" alt="Top Slot" />
+                         src={`${import.meta.env.BASE_URL}supreme.svg`} alt="Top Slot" />
                         <img
                           key={showJoinOptions ? 'visible' : 'hidden'}
                           className={`hud-button1 under-superior ${!address ? 'disabled' : ''} mount`}
@@ -878,7 +878,7 @@ function App() {
                             click4.play();
                             setShowParentInput(true);
                           }}
-                          src="/superior.svg"
+                          src={`${import.meta.env.BASE_URL}superior.svg`}
                           alt="Under Superior"
                         />
                     </>
@@ -904,28 +904,28 @@ function App() {
                         <div className="join-under">
                           <h3>Enter the TON address of your superior</h3></div>
                           <img className={`hud-button2 ${!address ? 'disabled' : ''} mount`} 
-                           src="/join-under.svg" alt="Join Under" />
+                           src={`${import.meta.env.BASE_URL}join-under.svg`} alt="Join Under" />
                           <img className={`hud-button3 join ${!address ? 'disabled' : ''} mount`} 
                           onClick={() => {
                             click4.play();
                             handleJoin(parentAddress);
-                            }} src="/joinb.svg" alt="Join Under" />
+                            }} src={`${import.meta.env.BASE_URL}joinb.svg`} alt="Join Under" />
                           <img className={`hud-button-back mount`} 
                           onClick={() => {
                             click4.play();
                             setShowParentInput(false);
-                          }} src="/back.svg" alt="Back" />
+                          }} src={`${import.meta.env.BASE_URL}back.svg`} alt="Back" />
                     </>
                   )}
                 </div>
               )}
              
                 {address ? (
-                  <img className="console-svg connected" src="/connected.svg" alt="Console Connected" />
+                  <img className="console-svg connected" src={`${import.meta.env.BASE_URL}connected.svg`} alt="Console Connected" />
                 ) : (
                   <img
                     className="console-svg disconnected"
-                    src="/disconnected.svg"
+                    src={`${import.meta.env.BASE_URL}disconnected.svg`}
                     alt="Console Disconnected"
                     onClick={() => {
                       click4.play();
@@ -942,7 +942,7 @@ function App() {
                 
                 <div className="hud-stats">
                   <img
-                    src="/self-hud.svg"
+                    src={`${import.meta.env.BASE_URL}self-hud.svg`}
                     alt="My Stats"
                     className='self-hud'
                   />
@@ -953,14 +953,14 @@ function App() {
                     </div>
                   )}
                   <img
-                    src="/hud-toggle.svg"
+                    src={`${import.meta.env.BASE_URL}hud-toggle.svg`}
                     className='hud-toggle'
                     onClick={() => {
                       click3.play();
                       setHudView(hudView === 'stats1' ? 'stats2' : 'stats1');}}
                   />
                   <img
-                    src={hudView === 'stats1' ? "/squad.svg" : "/squad2.svg"}
+                    src={hudView === 'stats1' ? `${import.meta.env.BASE_URL}squad.svg` : `${import.meta.env.BASE_URL}squad2.svg`}
                     alt="Squad Status"
                     className="squad-status"
                   />
@@ -1096,7 +1096,7 @@ function App() {
                             key={index}
                             filled={false}
                             className="slot-card"
-                            customImage="/captain.png"
+                            customImage={`${import.meta.env.BASE_URL}captain.png`}
                             rank='captain'
                           />
                         ) : (
@@ -1163,7 +1163,7 @@ function App() {
                         key="caporal"
                         className="slot-card"
                         filled={false}
-                        customImage="/caporal.png"
+                        customImage={`${import.meta.env.BASE_URL}caporal.png`}
                         rank='caporal'
                       />
 
@@ -1224,7 +1224,7 @@ function App() {
                             key="soldier"
                             className="slot-card"
                             filled={false}
-                            customImage="/soldier.png"
+                            customImage={`${import.meta.env.BASE_URL}soldier.png`}
                             rank='soldier'
                           >
                           </SlotCard>

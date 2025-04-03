@@ -17,7 +17,7 @@ export const SlotCard: React.FC<SlotCardProps> = ({ filled, username, address, c
         <div className={`slot-card ${className || ''}`} onClick={onClick}>
             <div className="slot-content">
                 <img
-                    src={customImage || (filled ? "/slotcard.png" : "/empty_slotcard.png")}
+                    src={customImage || (filled ? `${import.meta.env.BASE_URL}slotcard.png` : `${import.meta.env.BASE_URL}empty_slotcard.png`)}
                     alt="Slot Frame"
                     className="slot-frame"
                 />
