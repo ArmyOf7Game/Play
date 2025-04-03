@@ -7,14 +7,39 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, orientation=portrait" />
   <title>-:Armyof7:-</title>
-  
-  <!-- Buffer polyfill using CDN -->
+
+  <!-- Add this require polyfill BEFORE any other scripts -->
+  <script>
+    // Simple require polyfill
+    window.require = function (module) {
+      if (module === 'buffer') {
+        return { Buffer: window.Buffer };
+      }
+      console.warn('Module not polyfilled:', module);
+      return {};
+    };
+
+    // Process polyfill
+    window.process = { env: { NODE_ENV: 'production' } };
+  </script>
+
+  <!-- Buffer polyfill - make sure this loads before your app -->
   <script src="https://cdn.jsdelivr.net/npm/buffer@6.0.3/index.min.js"></script>
   <script>
+    // Check if buffer loaded correctly
+    if (typeof window.buffer === 'undefined') {
+      console.warn('Buffer library not loaded correctly, creating fallback');
+      window.buffer = { Buffer: function () { } };
+      window.buffer.Buffer.from = function (data, encoding) {
+        return new Uint8Array(0);
+      };
+    }
+
     // Make Buffer available globally
     window.Buffer = window.buffer.Buffer;
+    console.log("Buffer polyfill status:", typeof window.Buffer);
   </script>
-  <script type="module" crossorigin src="/Play/assets/index-Bc-A0r5y.js"></script>
+  <script type="module" crossorigin src="/Play/assets/index-y5qWYTss.js"></script>
   <link rel="stylesheet" crossorigin href="/Play/assets/index-Ch9ryUQv.css">
 </head>
 
@@ -23,4 +48,3 @@
 </body>
 
 </html>
-
