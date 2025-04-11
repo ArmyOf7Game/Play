@@ -44,11 +44,11 @@ jobs:
       - name: Build with TypeScript errors ignored
         env:
           # Set environment variables from GitHub Secrets
-          VITE_TON_API_KEY: ${{ secrets.TON_API_KEY }}
-          VITE_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          VITE_BYPASS_TELEGRAM_VALIDATION: ${{ secrets.BYPASS_TELEGRAM_VALIDATION }}
-          VITE_SMART_CONTRACT: ${{ secrets.SMART_CONTRACT }}
-          VITE_GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          VITE_TON_API_KEY: ${{ secrets.VITE_TON_API_KEY }}
+          VITE_TELEGRAM_BOT_TOKEN: ${{ secrets.VITE_TELEGRAM_BOT_TOKEN }}
+          VITE_BYPASS_TELEGRAM_VALIDATION: ${{ secrets.VITE_BYPASS_TELEGRAM_VALIDATION }}
+          VITE_SMART_CONTRACT: ${{ secrets.VITE_SMART_CONTRACT }}
+          VITE_GROQ_API_KEY: ${{ secrets.VITE_GROQ_API_KEY }}
           # Bypass TypeScript errors
           TSC_COMPILE_ON_ERROR: "true"
           CI: "false"
