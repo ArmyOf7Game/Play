@@ -33,7 +33,7 @@ jobs:
         run: npm install --legacy-peer-deps
         
       - name: Install missing dependencies
-        run: npm install --save @ton/core@^0.56.0 @ton/ton@^13.9.0 axios
+        run: npm install --save @ton/core@0.56.0 @ton/ton@13.9.0 axios
         
       - name: Create .env file
         run: |
