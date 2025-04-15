@@ -30,7 +30,7 @@ jobs:
         
       # IMPORTANT: Changed from npm ci to npm install
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
         
       - name: Install missing dependencies
         run: npm install --save @ton/core@^0.56.0 @ton/ton@^13.9.0 axios
