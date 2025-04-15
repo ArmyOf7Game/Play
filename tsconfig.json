@@ -1,0 +1,19 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+
+
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": false,
+    "types": ["node"]
+  },
+
+  "exclude": [
+    "node_modules",
+    "src/contracts/SlotContract.ts" // Exclude the problematic file
+  ]
+}
