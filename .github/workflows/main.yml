@@ -21,19 +21,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'  # Updated to Node.js 20 for react-router compatibility
           cache: 'npm'
-      
+        
+      # IMPORTANT: Changed from npm ci to npm install
       - name: Install dependencies
-        run: npm ci
-      
+        run: npm install
+        
       - name: Install missing dependencies
-        run: npm install --save-dev @types/axios @ton/core @ton/ton
-      
+        run: npm install --save @ton/core@^0.56.0 @ton/ton@^13.9.0 axios
+        
       - name: Create .env file
         run: |
           echo "VITE_TON_API_KEY=${{ secrets.VITE_TON_API_KEY }}" >> .env
@@ -41,13 +42,11 @@ jobs:
           echo "VITE_BYPASS_TELEGRAM_VALIDATION=${{ secrets.VITE_BYPASS_TELEGRAM_VALIDATION }}" >> .env
           echo "VITE_SMART_CONTRACT=${{ secrets.VITE_SMART_CONTRACT }}" >> .env
           echo "VITE_GROQ_API_KEY=${{ secrets.VITE_GROQ_API_KEY }}" >> .env
-      
+        
       - name: Build
-        run: |
-          # Build with Vite directly, ignoring TypeScript errors
-          npx vite build
-      
-      # Use JamesIves/github-pages-deploy-action instead of GitHub's built-in Pages deployment
+        run: npx vite build
+          
+      # Use JamesIves/github-pages-deploy-action
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
